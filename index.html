@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HydraVideo — The $899 Website + Sizzle Reel Combo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#4E0550;        /* base + background */
+    --purple-deep:#330536;   /* deepest anchor */
+    --purple-panel:#3D043F;  /* cards */
+    --purple-lift:#640768;   /* hover */
+    --yellow:#FCFF00;
+    --yellow-deep:#D6D900;
+    --mag:#FF74E0;           /* light magenta accent */
+    --mag-soft:#FFA6EE;
+    --paper:#F7ECF8;
+    --lilac:#CBA9D0;
+    --line:rgba(255,255,255,0.12);
+    --line-2:rgba(255,255,255,0.22);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--purple);
+    color:var(--paper);
+    font-family:'Archivo',sans-serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--yellow);color:var(--purple-deep)}
+
+  /* ---- grain + letterbox ---- */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;opacity:.55;
+  }
+  .bar{position:fixed;left:0;right:0;height:26px;background:var(--purple-deep);z-index:60;pointer-events:none}
+  .bar.top{top:0;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .bar.bot{bottom:0;border-top:1px solid rgba(255,255,255,0.06)}
+
+  /* ---- broadcast bug ---- */
+  .bug{
+    position:fixed;right:18px;bottom:38px;z-index:62;
+    display:flex;align-items:center;gap:9px;padding:7px 13px;
+    border:1px solid var(--line-2);border-radius:2px;
+    background:rgba(51,5,54,0.78);backdrop-filter:blur(8px);
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--paper);
+  }
+  .bug b{color:var(--yellow);font-weight:700}
+  .rec{width:9px;height:9px;border-radius:50%;background:var(--yellow);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(252,255,0,.5)}50%{opacity:.45;box-shadow:0 0 0 5px rgba(252,255,0,0)}}
+
+  /* ---- layout ---- */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+  section{position:relative;z-index:2}
+
+  .tc{
+    font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--mag);display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;
+  }
+  .tc::before{content:"";width:30px;height:1px;background:var(--mag)}
+
+  h2.head{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.96;letter-spacing:.005em;font-size:clamp(34px,5.4vw,62px)}
+  .accent{color:var(--yellow)}
+  .mag{color:var(--mag)}
+
+  p.lead{font-size:clamp(17px,2vw,20px);color:#E4D2E8;max-width:60ch;margin-top:20px}
+  p.body{color:#D8C2DC;max-width:62ch}
+  p.body + p.body{margin-top:16px}
+
+  /* ---- buttons ---- */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:15.5px;letter-spacing:.04em;
+    text-transform:uppercase;text-decoration:none;padding:18px 30px;border-radius:3px;border:none;
+    transition:transform .18s,box-shadow .18s;color:var(--purple-deep);background:var(--yellow);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px rgba(252,255,0,.6)}
+  .btn:focus-visible{outline:3px solid var(--mag);outline-offset:3px}
+  .btn .arr{font-family:'Space Mono',monospace}
+  .btn.ghost{background:transparent;color:var(--paper);border:1px solid var(--line-2)}
+  .btn.ghost:hover{border-color:var(--mag);color:var(--mag-soft);box-shadow:none}
+
+  /* ---- HERO ---- */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 90px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 80% 16%, rgba(252,255,0,.16), transparent 52%),
+      radial-gradient(110% 120% at 6% 96%, rgba(255,116,224,.22), transparent 55%),
+      linear-gradient(180deg,#5A0A5C,#4E0550 55%,#3C043E);
+  }
+  .hero-bg::after{content:"";position:absolute;inset:0;opacity:.45;background-image:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.22) 2px 4px)}
+  .hero .wrap{position:relative;z-index:3}
+  .slate-row{display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--lilac);text-transform:uppercase;margin-bottom:34px}
+  .slate-row span{display:flex;align-items:center;gap:8px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--mag)}
+  h1{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.004em;font-size:clamp(46px,9vw,118px)}
+  h1 .l2{color:var(--yellow)}
+  .hero-sub{margin:30px 0 38px;font-size:clamp(17px,2.1vw,21px);color:#E6D5EA;max-width:54ch}
+  .hero-sub b{color:var(--paper)}
+  .price-flag{display:inline-flex;align-items:baseline;gap:10px;margin-left:6px;font-family:'Anton',sans-serif;color:var(--yellow)}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .trust{margin-top:30px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.08em;color:var(--lilac)}
+
+  .blk{padding:96px 0;border-top:1px solid var(--line)}
+
+  /* ---- problem ---- */
+  .problem .big{font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.98;font-size:clamp(28px,4.6vw,52px);margin-top:18px}
+  .strike{color:var(--lilac);text-decoration:line-through;text-decoration-color:var(--yellow);text-decoration-thickness:3px}
+
+  /* ---- value cards ---- */
+  .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  .reel{background:linear-gradient(180deg,var(--purple-panel),#330535);border:1px solid var(--line);border-radius:6px;padding:30px 26px;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden}
+  .reel::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--mag);transition:width .3s}
+  .reel:hover{transform:translateY(-5px);border-color:var(--line-2);box-shadow:0 24px 50px -28px rgba(0,0,0,.85)}
+  .reel:hover::before{width:100%}
+  .reel .rno{font-family:'Space Mono',monospace;font-size:12px;color:var(--yellow);letter-spacing:.16em}
+  .reel h3{font-family:'Archivo';font-weight:700;font-size:19px;margin:14px 0 14px;letter-spacing:.01em;text-transform:uppercase}
+  .reel ul{list-style:none}
+  .reel li{padding:7px 0 7px 22px;position:relative;color:#D8C2DC;font-size:15px}
+  .reel li::before{content:"›";position:absolute;left:0;color:var(--mag);font-weight:700}
+  .vline{text-align:center;margin-top:34px;font-family:'Space Mono',monospace;font-size:14px;color:var(--lilac);letter-spacing:.04em}
+  .vline b{color:var(--yellow)}
+
+  /* ---- who ---- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+  .who{border:1px solid var(--line);border-radius:6px;padding:34px 30px;background:var(--purple-panel);position:relative}
+  .who .tag{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  .who.launch .tag{color:var(--mag)}
+  .who.rebuild .tag{color:var(--yellow)}
+  .who h3{font-family:'Anton';font-weight:400;text-transform:uppercase;font-size:28px;margin:14px 0 14px;line-height:1}
+  .bridge{text-align:center;margin-top:38px;font-size:clamp(18px,2.4vw,24px);font-family:'Archivo';font-weight:600}
+  .bridge em{font-style:normal;color:var(--yellow)}
+
+  /* ---- proof ---- */
+  .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .stat{flex:1;min-width:200px;border:1px solid var(--line);border-radius:6px;padding:24px;background:var(--purple-panel)}
+  .stat .k{font-family:'Space Mono';font-size:12px;color:var(--mag);letter-spacing:.1em;text-transform:uppercase}
+  .stat .v{font-family:'Archivo';font-weight:600;font-size:16px;margin-top:8px;color:#E4D2E8}
+  .logos{margin-top:30px;font-family:'Space Mono',monospace;font-size:13px;color:var(--lilac);letter-spacing:.06em}
+  .logos b{color:var(--paper)}
+
+  /* ---- steps ---- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  .step{position:relative;padding:30px 26px;border:1px solid var(--line);border-radius:6px;background:var(--purple-panel)}
+  .step .n{font-family:'Anton';font-size:48px;color:var(--yellow);line-height:1}
+  .step h3{font-family:'Archivo';font-weight:700;text-transform:uppercase;font-size:17px;margin:10px 0 10px;letter-spacing:.02em}
+  .step p{color:#D8C2DC;font-size:15px}
+
+  /* ---- faq ---- */
+  .faq{margin-top:40px;border-top:1px solid var(--line)}
+  .q{border-bottom:1px solid var(--line)}
+  .q button{width:100%;text-align:left;background:none;border:none;color:var(--paper);cursor:pointer;font-family:'Archivo';font-weight:600;font-size:18px;padding:24px 44px 24px 0;position:relative}
+  .q button:focus-visible{outline:2px solid var(--mag);outline-offset:4px}
+  .q button::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:'Space Mono';color:var(--yellow);font-size:22px}
+  .q.open button::after{content:"–"}
+  .q .a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:#D8C2DC}
+  .q .a p{padding:0 30px 24px 0}
+
+  /* ---- close ---- */
+  .close{padding:110px 0;border-top:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+  .close::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(80% 100% at 50% 120%, rgba(252,255,0,.14), transparent 58%),radial-gradient(70% 90% at 50% -10%, rgba(255,116,224,.20), transparent 55%)}
+  .close .wrap{position:relative;z-index:2}
+  .close .titlecard{font-family:'Anton';text-transform:uppercase;font-size:clamp(48px,9vw,108px);line-height:.9;margin:18px 0 10px}
+  .close .titlecard .accent{display:block}
+  .close p.lead{margin-left:auto;margin-right:auto}
+
+  /* ---- form ---- */
+  .form-card{max-width:560px;margin:46px auto 0;text-align:left;background:var(--purple-panel);border:1px solid var(--line-2);border-radius:8px;padding:34px}
+  .form-card .fl{font-family:'Space Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--lilac);display:block;margin:18px 0 8px}
+  .form-card .fl:first-child{margin-top:0}
+  .form-card input,.form-card select{width:100%;padding:14px 16px;background:var(--purple-deep);border:1px solid var(--line-2);border-radius:4px;color:var(--paper);font-family:'Archivo';font-size:16px}
+  .form-card input:focus,.form-card select:focus{outline:none;border-color:var(--yellow)}
+  .form-card .btn{width:100%;justify-content:center;margin-top:26px}
+  .form-note{font-family:'Space Mono';font-size:11.5px;color:var(--lilac);text-align:center;margin-top:16px;letter-spacing:.04em}
+
+  /* ---- footer ---- */
+  footer{padding:48px 0 64px;border-top:1px solid var(--line);text-align:center}
+  .logo{font-family:'Anton';font-size:24px;letter-spacing:.04em;text-transform:uppercase}
+  .logo .accent{color:var(--yellow)}
+  footer p{font-family:'Space Mono';font-size:12px;color:var(--lilac);letter-spacing:.06em;margin-top:14px}
+
+  .rev{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+  .rev.in{opacity:1;transform:none}
+
+  @media (max-width:860px){
+    .reels,.steps{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr}
+    .bug{bottom:32px;right:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .rev{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar top"></div>
+<div class="bar bot"></div>
+<div class="bug"><span class="rec"></span> REC <b>$899</b> COMBO</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="slate-row rev in">
+      <span><i class="dot"></i> HYDRAVIDEO</span>
+      <span><i class="dot"></i> CINEMATIC PRODUCTION</span>
+      <span><i class="dot"></i> FAA PART 107 CERTIFIED</span>
+    </div>
+    <h1>YOUR SITE GETS<br>YOU FOUND.<br><span class="l2">YOUR VIDEO GETS<br>YOU REMEMBERED.</span></h1>
+    <p class="hero-sub">A stunning, modern website <b>and</b> a cinematic sizzle reel — built together, by one studio, for one flat price of <span class="price-flag">$899</span>. No upsells. No surprises. No compromise.</p>
+    <div class="cta-row">
+      <a href="#claim" class="btn">Claim the $899 Combo <span class="arr">→</span></a>
+      <a href="#offer" class="btn ghost">See what's included</a>
+    </div>
+    <p class="trust">ONE STUDIO · START TO FINISH · STORY-FIRST STRATEGY</p>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="blk problem">
+  <div class="wrap">
+    <div class="tc rev">00:01 — The Problem</div>
+    <h2 class="head rev">FIRST IMPRESSIONS<br>HAPPEN IN <span class="accent">SECONDS.</span></h2>
+    <p class="big rev"><span class="strike">Walls of text.</span> <span class="strike">Stock photos.</span> A site that loads slow and looks dated.</p>
+    <p class="body rev" style="margin-top:26px">Your customers decide before they ever read a word. They land, they scroll, and if you look forgettable — they're gone, onto the next name in the search results.</p>
+    <p class="body rev">You don't have a quality problem. You have a <b class="mag">presence problem</b>. And fixing it usually means hiring a web team <em>and</em> a video team — two vendors, two invoices, and a brand that doesn't quite match in the middle.</p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="blk" id="offer">
+  <div class="wrap">
+    <div class="tc rev">00:02 — The Fix</div>
+    <h2 class="head rev">ONE STUDIO.<br>ONE PRICE.<br><span class="mag">BOTH DONE RIGHT.</span></h2>
+    <p class="lead rev">HydraVideo built the $899 Combo because your website and your video should be made <em>together</em> — by people who think like filmmakers and market like closers. A clean, modern, conversion-ready website plus a cinematic sizzle reel that makes you impossible to ignore. One roof. One vision. <b>$899 flat.</b></p>
+    <div class="cta-row rev" style="margin-top:34px">
+      <a href="#claim" class="btn">Get the $899 Combo <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="blk">
+  <div class="wrap">
+    <div class="tc rev">00:03 — What's Included</div>
+    <h2 class="head rev">EVERYTHING, FOR <span class="accent">$899.</span></h2>
+    <div class="reels">
+      <div class="reel rev">
+        <div class="rno">REEL 01</div>
+        <h3>Cinematic Sizzle Reel</h3>
+        <ul>
+          <li>Professionally shot &amp; edited brand video</li>
+          <li>Story-driven script written to sell</li>
+          <li>Cut for site, social &amp; ads</li>
+          <li>Cinematic color, motion &amp; sound</li>
+        </ul>
+      </div>
+      <div class="reel rev">
+        <div class="rno">REEL 02</div>
+        <h3>Modern Website</h3>
+        <ul>
+          <li>Clean, mobile-first, conversion-focused</li>
+          <li>Fast-loading, premium on every device</li>
+          <li>Your sizzle reel front and center</li>
+          <li>Clear CTAs that turn visits into leads</li>
+        </ul>
+      </div>
+      <div class="reel rev">
+        <div class="rno">REEL 03</div>
+        <h3>The HydraVideo Edge</h3>
+        <ul>
+          <li>One team handling both builds</li>
+          <li>A site and video that finally match</li>
+          <li>Story-first strategy baked in</li>
+          <li>Real production value, not a template</li>
+        </ul>
+      </div>
+    </div>
+    <p class="vline rev">Studios charge thousands for video alone. Thousands more for a custom site. <b>You get both — for $899.</b></p>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="blk">
+  <div class="wrap">
+    <div class="tc rev">00:04 — Who It's For</div>
+    <h2 class="head rev">TWO KINDS OF<br>BUSINESS. <span class="mag">ONE MOVE.</span></h2>
+    <div class="split">
+      <div class="who launch rev">
+        <div class="tag">▲ Launching</div>
+        <h3>Something New?</h3>
+        <p class="body">Don't open your doors looking like a startup that isn't sure of itself. Arrive like you've been here for years. Your first impression sets your price point — make it count.</p>
+      </div>
+      <div class="who rebuild rev">
+        <div class="tag">↻ Reinventing</div>
+        <h3>Something Old?</h3>
+        <p class="body">That website you've been "meaning to fix"? The brand that's grown past its look? This is the glow-up. Show customers you've leveled up — before your competitor does it first.</p>
+      </div>
+    </div>
+    <p class="bridge rev">New or established — this is how you show up <em>like you mean it.</em></p>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="blk">
+  <div class="wrap">
+    <div class="tc rev">00:05 — The Proof</div>
+    <h2 class="head rev">YOU'RE IN <span class="accent">GOOD COMPANY.</span></h2>
+    <div class="stats">
+      <div class="stat rev"><div class="k">Production</div><div class="v">Cinematic, FAA Part 107 certified drone</div></div>
+      <div class="stat rev"><div class="k">Strategy</div><div class="v">Story-first work that drives calls, not just clicks</div></div>
+      <div class="stat rev"><div class="k">Trusted By</div><div class="v">Trades, real estate &amp; local brands</div></div>
+    </div>
+    <p class="logos rev">As trusted by <b>Synergy Electrical</b> · <b>Fireside Supply</b> · <b>+ growing</b></p>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="blk">
+  <div class="wrap">
+    <div class="tc rev">00:06 — How It Works</div>
+    <h2 class="head rev">FROM YES<br>TO <span class="mag">LIVE</span> IN 3 STEPS.</h2>
+    <div class="steps">
+      <div class="step rev"><div class="n">01</div><h3>Claim Your Spot</h3><p>Hit the button, drop your details. We reach out to lock in your $899 Combo.</p></div>
+      <div class="step rev"><div class="n">02</div><h3>We Build It</h3><p>One discovery call, then HydraVideo handles the rest — script, shoot, edit, site.</p></div>
+      <div class="step rev"><div class="n">03</div><h3>You Go Live</h3><p>A site and sizzle reel that make you look like the real deal. Built to convert.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="blk">
+  <div class="wrap">
+    <div class="tc rev">00:07 — The Fine Print</div>
+    <h2 class="head rev">QUESTIONS, <span class="accent">ANSWERED.</span></h2>
+    <div class="faq rev">
+      <div class="q"><button>Is $899 really the total price?</button><div class="a"><p>Yes. One flat price for both your website and your sizzle reel. No hidden fees, no bait-and-switch upsells.</p></div></div>
+      <div class="q"><button>How long does it take?</button><div class="a"><p>Most combos go from kickoff to launch in a matter of weeks, depending on your shoot schedule. You'll get a clear timeline on our first call.</p></div></div>
+      <div class="q"><button>What if I already have a website?</button><div class="a"><p>Perfect — this is your glow-up. We rebuild it modern, fast, and built around your new sizzle reel.</p></div></div>
+      <div class="q"><button>Do I need to script or plan the video?</button><div class="a"><p>Nope. Story-first is what we do. We write it, shoot it, and edit it — you just show up.</p></div></div>
+      <div class="q"><button>What kind of businesses is this for?</button><div class="a"><p>Trades, real estate, retail, local service brands — anyone launching or leveling up who wants to look the part.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE + FORM -->
+<section class="close" id="claim">
+  <div class="wrap">
+    <div class="tc rev" style="justify-content:center">00:08 — Action</div>
+    <div class="titlecard rev">STOP BLENDING IN.<span class="accent">START SHOWING UP.</span></div>
+    <p class="lead rev">A modern website. A cinematic sizzle reel. One price. Your competition is one scroll away — claim your spot before the slots are full.</p>
+
+    <div class="form-card rev">
+      <label class="fl" for="nm">Name</label>
+      <input id="nm" type="text" placeholder="Your name">
+      <label class="fl" for="em">Email</label>
+      <input id="em" type="email" placeholder="you@business.com">
+      <label class="fl" for="ph">Phone</label>
+      <input id="ph" type="tel" placeholder="(000) 000-0000">
+      <label class="fl" for="goal">I'm…</label>
+      <select id="goal">
+        <option>Launching something new</option>
+        <option>Reinventing something old</option>
+      </select>
+      <button class="btn" id="submit">Claim my $899 Combo <span class="arr">→</span></button>
+      <p class="form-note">Limited build slots · We respond within 24 hours</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">HYDRA<span class="accent">VIDEO</span></div>
+    <p>THE HOME OF THE $899 WEBSITE + SIZZLE REEL COMBO</p>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+
+  document.querySelectorAll('.q button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const q=b.parentElement, a=q.querySelector('.a'), open=q.classList.contains('open');
+      document.querySelectorAll('.q').forEach(o=>{o.classList.remove('open');o.querySelector('.a').style.maxHeight=null});
+      if(!open){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+    });
+  });
+
+  document.getElementById('submit').addEventListener('click',()=>{
+    const n=document.getElementById('nm').value.trim();
+    const e=document.getElementById('em').value.trim();
+    if(!n||!e){alert('Add your name and email to claim your spot.');return;}
+    alert("You're in, "+n+"! Your $899 Combo spot is reserved. We'll reach out within 24 hours.");
+  });
+</script>
+</body>
+</html>
