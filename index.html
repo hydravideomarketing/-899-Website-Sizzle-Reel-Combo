@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HydraVideo — The $899 Website + Sizzle Reel Combo</title>
+<meta name="description" content="Get a modern, conversion-ready website AND a cinematic sizzle reel video — built together by one studio for one flat price of $899. One studio, one price, no separate vendors.">
+<meta name="keywords" content="web design, website design, video production, sizzle reel video, small business marketing, digital marketing agency, local business website, $899 website combo">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://websitevideocombo.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HydraVideo — The $899 Website + Sizzle Reel Combo">
+<meta property="og:description" content="A modern website AND a cinematic sizzle reel, built together by one studio, for one flat price of $899.">
+<meta property="og:url" content="https://websitevideocombo.com/">
+<meta property="og:site_name" content="HydraVideo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HydraVideo — The $899 Website + Sizzle Reel Combo">
+<meta name="twitter:description" content="A modern website AND a cinematic sizzle reel, built together by one studio, for one flat price of $899.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -41,8 +53,36 @@
     mix-blend-mode:overlay;opacity:.55;
   }
   .bar{position:fixed;left:0;right:0;height:26px;background:var(--purple-deep);z-index:60;pointer-events:none}
-  .bar.top{top:0;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .bar.top{
+    top:0;border-bottom:1px solid rgba(255,255,255,0.06);
+    height:64px;display:flex;align-items:center;justify-content:flex-start;
+    padding:0 24px;pointer-events:auto;gap:14px;
+  }
+  .bar-phone{
+    font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--paper);text-decoration:none;
+    display:flex;align-items:center;gap:8px;white-space:nowrap;transition:color .2s;
+  }
+  .bar-phone:hover{color:var(--yellow)}
+  .bar-book{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em;
+    text-transform:uppercase;text-decoration:none;white-space:nowrap;
+    background:var(--yellow);color:var(--purple-deep);padding:14px 34px;border-radius:4px;
+    box-shadow:0 6px 22px -8px rgba(252,255,0,.55);
+    transition:transform .15s,box-shadow .15s;
+  }
+  .bar-book:hover{transform:translate(-50%,calc(-50% - 2px));box-shadow:0 12px 30px -8px rgba(252,255,0,.75)}
   .bar.bot{bottom:0;border-top:1px solid rgba(255,255,255,0.06)}
+  @media (max-width:700px){
+    .bar.top{padding:0 12px;height:58px}
+    .bar-phone .cw{display:none}
+    .bar-phone{font-size:11px;letter-spacing:0}
+    .bar-book{font-size:12px;padding:10px 14px;letter-spacing:.03em}
+  }
+  @media (max-width:360px){
+    .bar-phone{display:none}
+  }
 
   /* ---- broadcast bug ---- */
   .bug{
@@ -88,7 +128,7 @@
   .btn.ghost:hover{border-color:var(--mag);color:var(--mag-soft);box-shadow:none}
 
   /* ---- HERO ---- */
-  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 90px;overflow:hidden}
+  .hero{min-height:100vh;display:flex;align-items:center;padding:160px 0 90px;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0}
   .hero-bg::before{
     content:"";position:absolute;inset:0;
@@ -181,6 +221,43 @@
   .form-card input:focus,.form-card select:focus{outline:none;border-color:var(--yellow)}
   .form-card .btn{width:100%;justify-content:center;margin-top:26px}
   .form-note{font-family:'Space Mono';font-size:11.5px;color:var(--lilac);text-align:center;margin-top:16px;letter-spacing:.04em}
+  .book-strip{padding:64px 0 72px;background:linear-gradient(180deg,#3C043E,#4E0550);border-bottom:1px solid var(--line);text-align:center;position:relative}
+  .book-head{font-size:clamp(30px,4.6vw,52px);margin-bottom:26px}
+  .how-to{max-width:620px;margin:0 auto 30px;text-align:left;background:rgba(51,5,54,.55);border:1px solid var(--line-2);border-radius:8px;padding:26px 30px}
+  .how-intro{font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mag);margin-bottom:14px}
+  .how-steps{list-style:none;counter-reset:s}
+  .how-steps li{counter-increment:s;position:relative;padding:9px 0 9px 40px;color:#E4D2E8;font-size:15.5px;line-height:1.55}
+  .how-steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:var(--yellow);color:var(--purple-deep);font-family:'Archivo';font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .how-steps b{color:var(--paper)}
+  @media (max-width:600px){.how-to{padding:20px 18px}.how-steps li{font-size:14.5px;padding-left:36px}}
+  /* ---- full-width video band ---- */
+  .video-band{
+    position:relative;width:100%;overflow:hidden;
+    background:var(--purple-deep);
+    border-top:2px solid var(--mag);border-bottom:2px solid var(--mag);
+    height:clamp(200px,34vw,440px);
+    line-height:0;
+  }
+  .video-band video{width:100%;height:100%;object-fit:cover;display:block}
+  .video-band::before,.video-band::after{
+    content:"";position:absolute;left:0;right:0;height:70px;pointer-events:none;z-index:2;
+  }
+  .video-band::before{top:0;background:linear-gradient(180deg,rgba(51,5,54,.75),transparent)}
+  .video-band::after{bottom:0;background:linear-gradient(0deg,rgba(51,5,54,.75),transparent)}
+  .video-tag{
+    position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;
+    font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--yellow);line-height:1.4;
+    text-shadow:0 2px 10px rgba(0,0,0,.9);white-space:nowrap;
+  }
+  @media (max-width:600px){
+    .video-band{height:clamp(180px,52vw,260px)}
+    .video-tag{font-size:9.5px;letter-spacing:.16em;bottom:14px}
+  }
+  .calendly-card{padding:20px;max-width:700px}
+  .calendly-cta{font-family:'Space Mono';font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);text-align:center;margin-bottom:16px;font-weight:700}
+  .calendly-inline-widget{border-radius:6px;overflow:hidden;border:2px solid var(--mag);box-shadow:0 0 0 4px rgba(255,116,224,0.15),0 20px 50px -20px rgba(0,0,0,.6)}
+  @media (max-width:600px){.calendly-card{padding:10px}.calendly-inline-widget{min-height:640px!important}}
 
   /* ---- footer ---- */
   footer{padding:48px 0 64px;border-top:1px solid var(--line);text-align:center}
@@ -202,10 +279,72 @@
     html{scroll-behavior:auto}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "HydraVideo Digital Marketing",
+  "telephone": "+1-860-281-9801",
+  "url": "https://websitevideocombo.com",
+  "description": "Cinematic video production and modern website design, built together as a single flat-rate combo for local businesses.",
+  "priceRange": "$899"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is $899 really the total price?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. One flat price for both your website and your sizzle reel. No hidden fees, no surprises."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most combos go from kickoff to launch in a matter of weeks, depending on your shoot schedule. You'll get a clear timeline on your first call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I already have a website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's your glow-up. HydraVideo rebuilds it modern, fast, and built around your new sizzle reel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to script or plan the video?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. HydraVideo writes, shoots, and edits the video for you — you just show up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of businesses is this for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trades, real estate, retail, and local service brands — anyone launching or leveling up who wants to look the part."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<div class="bar top"></div>
+<div class="bar top">
+  <a href="tel:8602819801" class="bar-phone"><span class="cw">Call </span>860-281-9801</a>
+  <a href="#book" class="bar-book">Book Your Call →</a>
+</div>
 <div class="bar bot"></div>
 <div class="bug"><span class="rec"></span> REC <b>$899</b> COMBO</div>
 
@@ -214,24 +353,62 @@
   <div class="hero-bg"></div>
   <div class="wrap">
     <div class="slate-row rev in">
-      <span><i class="dot"></i> HYDRAVIDEO DIGITAL MARKETING</span>
+      <span><i class="dot"></i> HYDRAVIDEO</span>
+      <span><i class="dot"></i> WEB DESIGN</span>
+      <span><i class="dot"></i> SIZZLE REELS</span>
+      <span><i class="dot"></i> CINEMATIC PRODUCTION</span>
+      <span><i class="dot"></i> FAA PART 107 CERTIFIED</span>
     </div>
     <h1>YOUR SITE GETS<br>YOU FOUND.<br><span class="l2">YOUR VIDEO GETS<br>YOU REMEMBERED.</span></h1>
-    <p class="hero-sub">A stunning, modern website <b>and</b> a cinematic sizzle reel — built together, by one studio, for one flat price of <span class="price-flag">$899</span>. No upsells. No surprises. No compromise.</p>
+    <p class="hero-sub">A stunning, modern website <b>and</b> a cinematic sizzle reel — built together, by one studio, for one flat price of <span class="price-flag">$899</span>. No surprises. No compromise.</p>
     <div class="cta-row">
-      <a href="#claim" class="btn">Claim the $899 Combo <span class="arr">→</span></a>
+      <a href="#book" class="btn">Claim the $899 Combo <span class="arr">→</span></a>
       <a href="#offer" class="btn ghost">See what's included</a>
     </div>
     <p class="trust">ONE STUDIO · START TO FINISH · STORY-FIRST STRATEGY</p>
   </div>
 </header>
 
+<!-- BOOK NOW - TOP PRIORITY -->
+<section class="book-strip" id="book">
+  <div class="wrap">
+    <div class="tc rev in" style="justify-content:center;margin-bottom:14px">00:00 — Book Your Call</div>
+    <h2 class="head rev in book-head">GRAB YOUR FREE<br><span class="accent">15-MINUTE CALL.</span></h2>
+
+    <div class="how-to rev in">
+      <p class="how-intro">Booking takes about 30 seconds. Here's how:</p>
+      <ol class="how-steps">
+        <li><b>Pick a day</b> — click any highlighted date in the white calendar below.</li>
+        <li><b>Pick a time</b> — open time slots appear on the right. Click the one you want.</li>
+        <li><b>Enter your name &amp; email</b> — then hit <b>Schedule Event</b>.</li>
+        <li><b>Check your inbox</b> — you'll get an instant confirmation with the call link.</li>
+      </ol>
+    </div>
+
+    <div class="form-card rev in calendly-card">
+      <p class="calendly-cta">↓ CLICK INSIDE THE WHITE CALENDAR AND PICK A DATE &amp; TIME BELOW TO LOCK IN YOUR CALL ↓</p>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/hydravideo-info/discovery-call-15-min?background_color=ffffff&text_color=330536&primary_color=4e0550" style="min-width:300px;height:680px;"></div>
+      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <p class="form-note">Free 15-minute discovery call · No pressure, no obligation</p>
+    </div>
+  </div>
+</section>
+
+<!-- FULL-WIDTH VIDEO BAND -->
+<section class="video-band">
+  <video autoplay muted loop playsinline preload="metadata"
+         poster="hydra-dragon-poster.jpg">
+    <source src="hydra-dragon-loop.mp4" type="video/mp4">
+  </video>
+  <div class="video-tag">Cinematic Production · HydraVideo</div>
+</section>
+
 <!-- PROBLEM -->
 <section class="blk problem">
   <div class="wrap">
     <div class="tc rev">00:01 — The Problem</div>
     <h2 class="head rev">FIRST IMPRESSIONS<br>HAPPEN IN <span class="accent">SECONDS.</span></h2>
-    <p class="big rev"><span class="strike">Walls of text. Stock photos. Slow load times. Dated design.</span></p>
+    <p class="big rev"><span class="strike">Walls of text.</span> <span class="strike">Stock photos.</span> A site that loads slow and looks dated.</p>
     <p class="body rev" style="margin-top:26px">Your customers decide before they ever read a word. They land, they scroll, and if you look forgettable — they're gone, onto the next name in the search results.</p>
     <p class="body rev">You don't have a quality problem. You have a <b class="mag">presence problem</b>. And fixing it usually means hiring a web team <em>and</em> a video team — two vendors, two invoices, and a brand that doesn't quite match in the middle.</p>
   </div>
@@ -241,10 +418,10 @@
 <section class="blk" id="offer">
   <div class="wrap">
     <div class="tc rev">00:02 — The Fix</div>
-    <h2 class="head rev">ONE STUDIO.<br>ONE PRICE.<br><span class="accent">BOTH DONE RIGHT.</span></h2>
+    <h2 class="head rev">ONE STUDIO.<br>ONE PRICE.<br><span class="mag">BOTH DONE RIGHT.</span></h2>
     <p class="lead rev">HydraVideo built the $899 Combo because your website and your video should be made <em>together</em> — by people who think like filmmakers and market like closers. A clean, modern, conversion-ready website plus a cinematic sizzle reel that makes you impossible to ignore. One roof. One vision. <b>$899 flat.</b></p>
     <div class="cta-row rev" style="margin-top:34px">
-      <a href="#claim" class="btn">Get the $899 Combo <span class="arr">→</span></a>
+      <a href="#book" class="btn">Get the $899 Combo <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -257,22 +434,22 @@
     <div class="reels">
       <div class="reel rev">
         <div class="rno">REEL 01</div>
-        <h3>Modern Website</h3>
+        <h3>Cinematic Sizzle Reel</h3>
         <ul>
-          <li>Clean, mobile-first, conversion-focused</li>
-          <li>Fast-loading, premium on every device</li>
-          <li>Your sizzle reel front and center</li>
-          <li>Clear CTAs that turn visits into leads</li>
+          <li>Professionally shot &amp; edited video production</li>
+          <li>Story-driven script written to sell</li>
+          <li>Cut for site, social &amp; ads</li>
+          <li>Cinematic color, motion &amp; sound</li>
         </ul>
       </div>
       <div class="reel rev">
         <div class="rno">REEL 02</div>
-        <h3>Cinematic Sizzle Reel</h3>
+        <h3>Modern Website</h3>
         <ul>
-          <li>Professionally shot &amp; edited brand video</li>
-          <li>Story-driven script written to sell</li>
-          <li>Cut for site, social &amp; ads</li>
-          <li>Cinematic color, motion &amp; sound</li>
+          <li>Clean, mobile-first web design, conversion-focused</li>
+          <li>Fast-loading, premium on every device</li>
+          <li>Your sizzle reel front and center</li>
+          <li>Clear CTAs that turn visits into leads</li>
         </ul>
       </div>
       <div class="reel rev">
@@ -294,7 +471,7 @@
 <section class="blk">
   <div class="wrap">
     <div class="tc rev">00:04 — Who It's For</div>
-    <h2 class="head rev">TWO KINDS OF<br>BUSINESS. <span class="accent">ONE MOVE.</span></h2>
+    <h2 class="head rev">TWO KINDS OF<br>BUSINESS. <span class="mag">ONE MOVE.</span></h2>
     <div class="split">
       <div class="who launch rev">
         <div class="tag">▲ Launching</div>
@@ -317,10 +494,11 @@
     <div class="tc rev">00:05 — The Proof</div>
     <h2 class="head rev">YOU'RE IN <span class="accent">GOOD COMPANY.</span></h2>
     <div class="stats">
-      <div class="stat rev"><div class="k">Production</div><div class="v">Story-first scriptwriting, cinematic editing &amp; conversion-ready web development</div></div>
+      <div class="stat rev"><div class="k">Production</div><div class="v">Cinematic, FAA Part 107 certified drone</div></div>
       <div class="stat rev"><div class="k">Strategy</div><div class="v">Story-first work that drives calls, not just clicks</div></div>
       <div class="stat rev"><div class="k">Trusted By</div><div class="v">Trades, real estate &amp; local brands</div></div>
     </div>
+    <p class="logos rev">As trusted by <b>Synergy Electrical</b> · <b>Fireside Supply</b> · <b>+ growing</b></p>
   </div>
 </section>
 
@@ -328,10 +506,10 @@
 <section class="blk">
   <div class="wrap">
     <div class="tc rev">00:06 — How It Works</div>
-    <h2 class="head rev">FROM YES<br>TO <span class="accent">LIVE</span> IN 3 STEPS.</h2>
+    <h2 class="head rev">FROM YES<br>TO <span class="mag">LIVE</span> IN 3 STEPS.</h2>
     <div class="steps">
       <div class="step rev"><div class="n">01</div><h3>Claim Your Spot</h3><p>Hit the button, drop your details. We reach out to lock in your $899 Combo.</p></div>
-      <div class="step rev"><div class="n">02</div><h3>We Build It</h3><p>One discovery call, then HydraVideo handles the rest — custom script, media collection and creation, edit, website and video deployed.</p></div>
+      <div class="step rev"><div class="n">02</div><h3>We Build It</h3><p>One discovery call, then HydraVideo handles the rest — script, shoot, edit, site.</p></div>
       <div class="step rev"><div class="n">03</div><h3>You Go Live</h3><p>A site and sizzle reel that make you look like the real deal. Built to convert.</p></div>
     </div>
   </div>
@@ -343,7 +521,7 @@
     <div class="tc rev">00:07 — The Fine Print</div>
     <h2 class="head rev">QUESTIONS, <span class="accent">ANSWERED.</span></h2>
     <div class="faq rev">
-      <div class="q"><button>Is $899 really the total price?</button><div class="a"><p>Yes. One flat price for both your website and your sizzle reel. No hidden fees, no bait-and-switch upsells.</p></div></div>
+      <div class="q"><button>Is $899 really the total price?</button><div class="a"><p>Yes. One flat price for both your website and your sizzle reel. No hidden fees, no surprises.</p></div></div>
       <div class="q"><button>How long does it take?</button><div class="a"><p>Most combos go from kickoff to launch in a matter of weeks, depending on your shoot schedule. You'll get a clear timeline on our first call.</p></div></div>
       <div class="q"><button>What if I already have a website?</button><div class="a"><p>Perfect — this is your glow-up. We rebuild it modern, fast, and built around your new sizzle reel.</p></div></div>
       <div class="q"><button>Do I need to script or plan the video?</button><div class="a"><p>Nope. Story-first is what we do. We write it, shoot it, and edit it — you just show up.</p></div></div>
@@ -359,21 +537,10 @@
     <div class="titlecard rev">STOP BLENDING IN.<span class="accent">START SHOWING UP.</span></div>
     <p class="lead rev">A modern website. A cinematic sizzle reel. One price. Your competition is one scroll away — claim your spot before the slots are full.</p>
 
-    <div class="form-card rev">
-      <label class="fl" for="nm">Name</label>
-      <input id="nm" type="text" placeholder="Your name">
-      <label class="fl" for="em">Email</label>
-      <input id="em" type="email" placeholder="you@business.com">
-      <label class="fl" for="ph">Phone</label>
-      <input id="ph" type="tel" placeholder="(000) 000-0000">
-      <label class="fl" for="goal">I'm…</label>
-      <select id="goal">
-        <option>Launching something new</option>
-        <option>Reinventing something old</option>
-      </select>
-      <button class="btn" id="submit">Claim my $899 Combo <span class="arr">→</span></button>
-      <p class="form-note">Limited build slots · We respond within 24 hours</p>
+    <div class="cta-row rev" style="justify-content:center;margin-top:36px">
+      <a href="#book" class="btn">Book Your Free Call <span class="arr">↑</span></a>
     </div>
+    <p class="form-note" style="margin-top:18px">Or call <b style="color:var(--paper)">860-281-9801</b></p>
   </div>
 </section>
 
@@ -394,13 +561,6 @@
       document.querySelectorAll('.q').forEach(o=>{o.classList.remove('open');o.querySelector('.a').style.maxHeight=null});
       if(!open){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
     });
-  });
-
-  document.getElementById('submit').addEventListener('click',()=>{
-    const n=document.getElementById('nm').value.trim();
-    const e=document.getElementById('em').value.trim();
-    if(!n||!e){alert('Add your name and email to claim your spot.');return;}
-    alert("You're in, "+n+"! Your $899 Combo spot is reserved. We'll reach out within 24 hours.");
   });
 </script>
 </body>
