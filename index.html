@@ -142,9 +142,9 @@
   .slate-row{display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--lilac);text-transform:uppercase;margin-bottom:34px}
   .slate-row span{display:flex;align-items:center;gap:8px}
   .dot{width:5px;height:5px;border-radius:50%;background:var(--mag)}
-  h1{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;letter-spacing:.004em;font-size:clamp(46px,9vw,118px)}
+  h1{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.004em;font-size:clamp(34px,4.3vw,62px)}
   h1 .l2{color:var(--yellow)}
-  .hero-sub{margin:30px 0 38px;font-size:clamp(17px,2.1vw,21px);color:#E6D5EA;max-width:54ch}
+  .hero-sub{margin:24px 0 26px;font-size:clamp(16px,1.5vw,18.5px);color:#E6D5EA;max-width:48ch}
   .hero-sub b{color:var(--paper)}
   .price-flag{display:inline-flex;align-items:baseline;gap:10px;margin-left:6px;font-family:'Anton',sans-serif;color:var(--yellow)}
   .cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
@@ -221,9 +221,58 @@
   .form-card input:focus,.form-card select:focus{outline:none;border-color:var(--yellow)}
   .form-card .btn{width:100%;justify-content:center;margin-top:26px}
   .form-note{font-family:'Space Mono';font-size:11.5px;color:var(--lilac);text-align:center;margin-top:16px;letter-spacing:.04em}
-  .book-strip{padding:64px 0 72px;background:linear-gradient(180deg,#3C043E,#4E0550);border-bottom:1px solid var(--line);text-align:center;position:relative}
-  .book-head{font-size:clamp(30px,4.6vw,52px);margin-bottom:26px}
-  .how-to{max-width:620px;margin:0 auto 30px;text-align:left;background:rgba(51,5,54,.55);border:1px solid var(--line-2);border-radius:8px;padding:26px 30px}
+
+  /* ---- two-column hero ---- */
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;width:100%}
+  .hero-col-left{padding-top:6px}
+  .hero-col-right{position:relative}
+
+  /* ---- antique circus marquee sign ---- */
+  .marquee{
+    display:block;position:relative;text-decoration:none;
+    margin:0 auto 22px;padding:26px 30px;border-radius:10px;
+    background:linear-gradient(180deg,#4A0730,#2E0520 60%,#22041a);
+    border:3px solid #C9962F;
+    box-shadow:0 0 0 4px #1B0313, 0 18px 44px -18px rgba(0,0,0,.85), inset 0 0 40px rgba(255,190,90,.16);
+  }
+  .marquee-txt{
+    display:block;text-align:center;
+    font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(15px,1.5vw,21px);line-height:1.18;letter-spacing:.045em;
+    color:#FFE9B8;
+    text-shadow:0 0 10px rgba(255,205,110,.75),0 0 26px rgba(255,170,60,.45),0 2px 0 #6a3d06;
+  }
+  /* bulbs: two offset layers that alternate = chase effect */
+  .marquee::before,.marquee::after{
+    content:"";position:absolute;inset:7px;border-radius:6px;pointer-events:none;
+    background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+    background-size:26px 26px,26px 26px,26px 26px,26px 26px;
+  }
+  .marquee::before{
+    background-image:
+      radial-gradient(circle at 6px 6px,#FFF0C4 0 3.1px,rgba(255,214,130,.35) 3.6px,transparent 5.4px),
+      radial-gradient(circle at 6px 6px,#FFF0C4 0 3.1px,rgba(255,214,130,.35) 3.6px,transparent 5.4px),
+      radial-gradient(circle at 6px 6px,#FFF0C4 0 3.1px,rgba(255,214,130,.35) 3.6px,transparent 5.4px),
+      radial-gradient(circle at 6px 6px,#FFF0C4 0 3.1px,rgba(255,214,130,.35) 3.6px,transparent 5.4px);
+    background-position:0 -6px,0 calc(100% + 6px),-6px 0,calc(100% + 6px) 0;
+    animation:bulbA 1.1s steps(1) infinite;
+  }
+  .marquee::after{
+    background-image:
+      radial-gradient(circle at 19px 6px,#FFD98A 0 3.1px,rgba(255,190,90,.3) 3.6px,transparent 5.4px),
+      radial-gradient(circle at 19px 6px,#FFD98A 0 3.1px,rgba(255,190,90,.3) 3.6px,transparent 5.4px),
+      radial-gradient(circle at 6px 19px,#FFD98A 0 3.1px,rgba(255,190,90,.3) 3.6px,transparent 5.4px),
+      radial-gradient(circle at 6px 19px,#FFD98A 0 3.1px,rgba(255,190,90,.3) 3.6px,transparent 5.4px);
+    background-position:0 -6px,0 calc(100% + 6px),-6px 0,calc(100% + 6px) 0;
+    animation:bulbB 1.1s steps(1) infinite;
+  }
+  @keyframes bulbA{0%,49%{opacity:1;filter:brightness(1.25)}50%,100%{opacity:.34;filter:brightness(.7)}}
+  @keyframes bulbB{0%,49%{opacity:.34;filter:brightness(.7)}50%,100%{opacity:1;filter:brightness(1.25)}}
+  @media (prefers-reduced-motion:reduce){
+    .marquee::before,.marquee::after{animation:none;opacity:.85}
+  }
+
+  .how-to{max-width:560px;margin:26px 0 30px;text-align:left;background:rgba(51,5,54,.55);border:1px solid var(--line-2);border-radius:8px;padding:22px 26px}
   .how-intro{font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mag);margin-bottom:14px}
   .how-steps{list-style:none;counter-reset:s}
   .how-steps li{counter-increment:s;position:relative;padding:9px 0 9px 40px;color:#E4D2E8;font-size:15.5px;line-height:1.55}
@@ -255,7 +304,7 @@
     .video-band{height:clamp(180px,52vw,260px)}
     .video-tag{font-size:9px;letter-spacing:.1em;bottom:12px}
   }
-  .calendly-card{padding:20px;max-width:700px}
+  .calendly-card{padding:16px;max-width:100%;margin:0}
   .calendly-cta{font-family:'Space Mono';font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);text-align:center;margin-bottom:16px;font-weight:700}
   .calendly-inline-widget{border-radius:6px;overflow:hidden;border:2px solid var(--mag);box-shadow:0 0 0 4px rgba(255,116,224,0.15),0 20px 50px -20px rgba(0,0,0,.6)}
   @media (max-width:600px){.calendly-card{padding:10px}.calendly-inline-widget{min-height:640px!important}}
@@ -269,6 +318,11 @@
   .rev{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
   .rev.in{opacity:1;transform:none}
 
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:34px}
+    h1{font-size:clamp(40px,8vw,72px)}
+    .hero{padding:130px 0 70px}
+  }
   @media (max-width:860px){
     .reels,.steps{grid-template-columns:1fr}
     .split{grid-template-columns:1fr}
@@ -301,7 +355,7 @@
       "name": "Is $899 really the total price?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. One flat price for both your website and your sizzle reel. No hidden fees, no surprises."
+        "text": "Yes. One flat price for both your website and your sizzle reel."
       }
     },
     {
@@ -309,7 +363,7 @@
       "name": "How long does it take?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most combos go from kickoff to launch in a matter of weeks, depending on your shoot schedule. You'll get a clear timeline on your first call."
+        "text": "Most combos go from kickoff to launch in a matter of weeks, depending on your schedule. You'll get a clear timeline on your first call."
       }
     },
     {
@@ -317,7 +371,7 @@
       "name": "What if I already have a website?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "That's your glow-up. HydraVideo rebuilds it modern, fast, and built around your new sizzle reel."
+        "text": "Perfect — this is your glow-up. We rebuild it modern, fast, and built around your new sizzle reel."
       }
     },
     {
@@ -325,7 +379,7 @@
       "name": "Do I need to script or plan the video?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. HydraVideo writes, shoots, and edits the video for you — you just show up."
+        "text": "We will work with you step-by-step to write and craft the video and create the website of your dreams."
       }
     },
     {
@@ -333,7 +387,7 @@
       "name": "What kind of businesses is this for?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Trades, real estate, retail, and local service brands — anyone launching or leveling up who wants to look the part."
+        "text": "Any and all businesses — Trades, real estate, retail, local service brands. Anyone launching or leveling up who wants to look the part."
       }
     }
   ]
@@ -352,7 +406,8 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-bg"></div>
-  <div class="wrap">
+  <div class="wrap hero-grid">
+   <div class="hero-col-left">
     <div class="slate-row rev in">
       <span><i class="dot"></i> HYDRAVIDEO</span>
       <span><i class="dot"></i> WEB DESIGN</span>
@@ -366,34 +421,32 @@
       <a href="#book" class="btn">Claim the $899 Combo <span class="arr">→</span></a>
       <a href="#offer" class="btn ghost">See what's included</a>
     </div>
-    <p class="trust">ONE STUDIO · START TO FINISH · STORY-FIRST STRATEGY</p>
-  </div>
-</header>
-
-<!-- BOOK NOW - TOP PRIORITY -->
-<section class="book-strip" id="book">
-  <div class="wrap">
-    <div class="tc rev in" style="justify-content:center;margin-bottom:14px">00:00 — Book Your Call</div>
-    <h2 class="head rev in book-head">GRAB YOUR FREE<br><span class="accent">15-MINUTE CALL.</span></h2>
-
     <div class="how-to rev in">
       <p class="how-intro">Booking takes about 30 seconds. Here's how:</p>
       <ol class="how-steps">
-        <li><b>Pick a day</b> — click any highlighted date in the white calendar below.</li>
-        <li><b>Pick a time</b> — open time slots appear on the right. Click the one you want.</li>
+        <li><b>Pick a day</b> — click any highlighted date in the calendar.</li>
+        <li><b>Pick a time</b> — open slots appear on the right. Click one.</li>
         <li><b>Enter your name &amp; email</b> — then hit <b>Schedule Event</b>.</li>
-        <li><b>Check your inbox</b> — you'll get an instant confirmation with the call link.</li>
+        <li><b>Check your inbox</b> — instant confirmation with the call link.</li>
       </ol>
     </div>
+    <p class="trust">ONE STUDIO · START TO FINISH · STORY-FIRST STRATEGY</p>
+   </div>
 
-    <div class="form-card rev in calendly-card">
-      <p class="calendly-cta">↓ CLICK INSIDE THE WHITE CALENDAR AND PICK A DATE &amp; TIME BELOW TO LOCK IN YOUR CALL ↓</p>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/hydravideo-info/discovery-call-15-min?background_color=ffffff&text_color=330536&primary_color=4e0550" style="min-width:300px;height:680px;"></div>
-      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      <p class="form-note">Free 15-minute discovery call · No pressure, no obligation</p>
-    </div>
+   <div class="hero-col-right" id="book">
+     <a href="#cal" class="marquee">
+       <span class="marquee-txt">Book your call by scheduling on Calendly below</span>
+     </a>
+     <div class="form-card rev in calendly-card" id="cal">
+       <p class="calendly-cta">↓ CLICK INSIDE THE WHITE CALENDAR AND PICK A DATE &amp; TIME BELOW TO LOCK IN YOUR CALL ↓</p>
+       <div class="calendly-inline-widget" data-url="https://calendly.com/hydravideo-info/discovery-call-15-min?background_color=ffffff&text_color=330536&primary_color=4e0550" style="min-width:280px;height:640px;"></div>
+       <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+       <p class="form-note">Free 15-minute discovery call · No pressure, no obligation</p>
+     </div>
+   </div>
   </div>
-</section>
+</header>
+
 
 <!-- FULL-WIDTH VIDEO BAND -->
 <section class="video-band">
@@ -519,11 +572,11 @@
     <div class="tc rev">00:07 — The Fine Print</div>
     <h2 class="head rev">QUESTIONS, <span class="accent">ANSWERED.</span></h2>
     <div class="faq rev">
-      <div class="q"><button>Is $899 really the total price?</button><div class="a"><p>Yes. One flat price for both your website and your sizzle reel. No hidden fees, no surprises.</p></div></div>
-      <div class="q"><button>How long does it take?</button><div class="a"><p>Most combos go from kickoff to launch in a matter of weeks, depending on your shoot schedule. You'll get a clear timeline on our first call.</p></div></div>
+      <div class="q"><button>Is $899 really the total price?</button><div class="a"><p>Yes. One flat price for both your website and your sizzle reel.</p></div></div>
+      <div class="q"><button>How long does it take?</button><div class="a"><p>Most combos go from kickoff to launch in a matter of weeks, depending on your schedule. You'll get a clear timeline on our first call.</p></div></div>
       <div class="q"><button>What if I already have a website?</button><div class="a"><p>Perfect — this is your glow-up. We rebuild it modern, fast, and built around your new sizzle reel.</p></div></div>
-      <div class="q"><button>Do I need to script or plan the video?</button><div class="a"><p>Nope. Story-first is what we do. We write it, shoot it, and edit it — you just show up.</p></div></div>
-      <div class="q"><button>What kind of businesses is this for?</button><div class="a"><p>Trades, real estate, retail, local service brands — anyone launching or leveling up who wants to look the part.</p></div></div>
+      <div class="q"><button>Do I need to script or plan the video?</button><div class="a"><p>We will work with you step-by-step to write and craft the video and create the website of your dreams.</p></div></div>
+      <div class="q"><button>What kind of businesses is this for?</button><div class="a"><p>Any and all businesses — Trades, real estate, retail, local service brands. Anyone launching or leveling up who wants to look the part.</p></div></div>
     </div>
   </div>
 </section>
