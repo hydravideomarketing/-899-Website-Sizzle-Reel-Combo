@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Booked — HydraVideo</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2589113894876642');
+fbq('track','PageView');
+/* conversion: a call was actually booked */
+fbq('track','Lead');
+fbq('track','Schedule');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2589113894876642&ev=Lead&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+
+<style>
+  :root{
+    --purple:#4E0550;--purple-deep:#330536;--purple-panel:#3D043F;
+    --yellow:#FCFF00;--mag:#FF74E0;--paper:#F7ECF8;--lilac:#CBA9D0;
+    --line:rgba(255,255,255,0.12);--line-2:rgba(255,255,255,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--purple);color:var(--paper);
+    font-family:'Archivo',sans-serif;font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(120% 90% at 80% 6%, rgba(252,255,0,.14), transparent 52%),
+      radial-gradient(110% 110% at 6% 96%, rgba(255,116,224,.20), transparent 55%);
+  }
+  .card{
+    position:relative;z-index:2;max-width:660px;margin:0 auto;padding:48px 28px 60px;text-align:center;
+  }
+  .tick{
+    width:78px;height:78px;margin:0 auto 26px;border-radius:50%;
+    background:var(--yellow);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 8px rgba(252,255,0,.14),0 18px 40px -14px rgba(0,0,0,.7);
+  }
+  .tick svg{width:40px;height:40px}
+  .tc{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--mag);margin-bottom:16px;
+  }
+  h1{
+    font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;
+    line-height:.95;font-size:clamp(36px,6.4vw,64px);margin-bottom:18px;
+  }
+  h1 .accent{color:var(--yellow);display:block}
+  .lead{font-size:clamp(17px,2vw,19px);color:#E4D2E8;max-width:48ch;margin:0 auto 34px}
+
+  .next{
+    text-align:left;background:linear-gradient(180deg,var(--purple-panel),#330535);
+    border:1px solid var(--line);border-radius:8px;padding:26px 30px;margin-bottom:30px;
+  }
+  .next h2{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--mag);margin-bottom:14px;font-weight:700;
+  }
+  .next ul{list-style:none}
+  .next li{
+    position:relative;padding:8px 0 8px 26px;color:#D8C2DC;font-size:16px;
+  }
+  .next li::before{
+    content:"›";position:absolute;left:0;color:var(--yellow);font-weight:700;
+  }
+  .next b{color:var(--paper)}
+
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14.5px;
+    letter-spacing:.05em;text-transform:uppercase;
+    background:transparent;color:var(--paper);border:1px solid var(--line-2);
+    padding:15px 28px;border-radius:3px;transition:border-color .2s,color .2s;
+  }
+  .cta:hover{border-color:var(--mag);color:#FFA6EE}
+  .phone{
+    margin-top:24px;font-family:'Space Mono',monospace;font-size:13px;
+    letter-spacing:.06em;color:var(--lilac);
+  }
+  .phone a{color:var(--paper);text-decoration:none}
+  .phone a:hover{color:var(--yellow)}
+  .logo{
+    margin-top:42px;padding-top:24px;border-top:1px solid var(--line);
+    font-family:'Anton',sans-serif;font-size:20px;letter-spacing:.04em;text-transform:uppercase;
+  }
+  .logo .accent{color:var(--yellow)}
+  @media (max-width:600px){.card{padding:38px 20px 48px}.next{padding:22px 20px}}
+</style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="tick">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#330536" stroke-width="3.2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="4 12.5 9.5 18 20 6.5"/>
+      </svg>
+    </div>
+
+    <div class="tc">Booking Confirmed</div>
+    <h1>You're On<span class="accent">The Calendar.</span></h1>
+
+    <p class="lead">Your free 15-minute discovery call is locked in. A confirmation email with the meeting link is on its way to your inbox right now.</p>
+
+    <div class="next">
+      <h2>What happens next</h2>
+      <ul>
+        <li><b>Check your email</b> — your confirmation includes the meeting link and a calendar invite.</li>
+        <li><b>Add it to your calendar</b> — one click from that email.</li>
+        <li><b>Show up as you are</b> — no prep needed. We'll talk about where your brand is now and where you want it to go.</li>
+        <li><b>Need to reschedule?</b> There's a link in the same email. No hard feelings.</li>
+      </ul>
+    </div>
+
+    <a href="/" class="cta">← Back to HydraVideo</a>
+
+    <p class="phone">Questions before the call? Call <a href="tel:8602819801">860-281-9801</a></p>
+
+    <div class="logo">HYDRA<span class="accent">VIDEO</span></div>
+  </div>
+</body>
+</html>
