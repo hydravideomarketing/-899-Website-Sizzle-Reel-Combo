@@ -562,7 +562,6 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
       <div class="stat rev"><div class="k">Strategy</div><div class="v">Story-first work that drives calls, not just clicks</div></div>
       <div class="stat rev"><div class="k">Trusted By</div><div class="v">Trades, real estate &amp; local brands</div></div>
     </div>
-    <p class="logos rev">As trusted by <b>Synergy Electrical</b> · <b>Fireside Supply</b> · <b>+ growing</b></p>
   </div>
 </section>
 
@@ -626,6 +625,28 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
       if(!open){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
     });
   });
+</script>
+
+<!-- Calendly booking -> Meta conversion (no redirect / no paid plan needed) -->
+<script>
+(function(){
+  var fired = false;
+  function isCalendlyEvent(e){
+    return e.origin === 'https://calendly.com'
+        && e.data && typeof e.data.event === 'string'
+        && e.data.event.indexOf('calendly.') === 0;
+  }
+  window.addEventListener('message', function(e){
+    if (!isCalendlyEvent(e)) return;
+    if (e.data.event !== 'calendly.event_scheduled') return;
+    if (fired) return;              // one conversion per booking
+    fired = true;
+    if (typeof fbq === 'function') {
+      fbq('track','Lead');
+      fbq('track','Schedule');
+    }
+  });
+})();
 </script>
 </body>
 </html>
