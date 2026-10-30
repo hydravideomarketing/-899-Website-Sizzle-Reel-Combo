@@ -216,6 +216,10 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
 
     <div class="contact-col-right">
       <form id="contactForm" class="form-card rev in" novalidate>
+        <input type="hidden" name="access_key" value="75790160-40d1-4504-aa73-d1ff0ba504a1">
+        <input type="hidden" name="subject" value="New contact form message — HydraVideo $899 Combo">
+        <input type="hidden" name="from_name" value="HydraVideo $899 Combo Site">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
         <label class="fl" for="c-name">Name</label>
         <input id="c-name" name="name" type="text" required placeholder="Your name">
         <label class="fl" for="c-email">Email</label>
@@ -253,10 +257,7 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
   document.querySelectorAll('.rev').forEach(el=>io.observe(el));
 
-  // ===== Contact form =====
-  // 1) Create a free form at https://formspree.io  2) Paste its endpoint below (replace YOUR_FORM_ID).
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-
+  // ===== Contact form (Web3Forms) =====
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
 
@@ -269,24 +270,26 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
       alert('Please add your name, email, and a message.');
       return;
     }
-    if(FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')){
-      alert("This form isn't connected yet. Create a free Formspree form and paste your endpoint into contact.html, then it'll deliver straight to your inbox. For now, call 860-281-9801.");
-      return;
-    }
+    const btn = form.querySelector('button[type="submit"]');
+    const btnText = btn.innerHTML;
+    btn.disabled = true; btn.innerHTML = 'Sending…';
     try{
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method:'POST',
         body:new FormData(form),
         headers:{'Accept':'application/json'}
       });
-      if(res.ok){
+      const data = await res.json();
+      if(data.success){
         form.style.display='none';
         success.style.display='block';
         if(typeof fbq === 'function'){ fbq('track','Lead'); fbq('track','Contact'); }
       } else {
+        btn.disabled = false; btn.innerHTML = btnText;
         alert('Something went wrong sending your message. Please call 860-281-9801.');
       }
     } catch(err){
+      btn.disabled = false; btn.innerHTML = btnText;
       alert('Network error. Please call 860-281-9801 or try again.');
     }
   });
