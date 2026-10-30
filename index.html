@@ -73,12 +73,19 @@
     transition:transform .15s,box-shadow .15s;
   }
   .bar-book:hover{transform:translate(-50%,calc(-50% - 2px));box-shadow:0 12px 30px -8px rgba(252,255,0,.75)}
+  .bar-nav{
+    margin-left:auto;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
+    letter-spacing:.05em;text-transform:uppercase;color:var(--paper);text-decoration:none;
+    transition:color .2s;position:relative;z-index:2;
+  }
+  .bar-nav:hover{color:var(--yellow)}
   .bar.bot{bottom:0;border-top:1px solid rgba(255,255,255,0.06)}
   @media (max-width:700px){
     .bar.top{padding:0 12px;height:58px}
     .bar-phone .cw{display:none}
     .bar-phone{font-size:11px;letter-spacing:0}
     .bar-book{font-size:12px;padding:10px 14px;letter-spacing:.03em}
+    .bar-nav{font-size:12px}
   }
   @media (max-width:360px){
     .bar-phone{display:none}
@@ -314,6 +321,8 @@
   .logo{font-family:'Anton';font-size:24px;letter-spacing:.04em;text-transform:uppercase}
   .logo .accent{color:var(--yellow)}
   footer p{font-family:'Space Mono';font-size:12px;color:var(--lilac);letter-spacing:.06em;margin-top:14px}
+  footer a{color:var(--lilac);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
 
   .rev{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
   .rev.in{opacity:1;transform:none}
@@ -413,6 +422,7 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
 <div class="bar top">
   <a href="tel:8602819801" class="bar-phone"><span class="cw">Call </span>860-281-9801</a>
   <a href="#book" class="bar-book">Book Your Call →</a>
+  <a href="/contact.html" class="bar-nav">Contact</a>
 </div>
 <div class="bar bot"></div>
 <div class="bug"><span class="rec"></span> REC <b>$899</b> COMBO</div>
@@ -612,6 +622,7 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
   <div class="wrap">
     <div class="logo">HYDRA<span class="accent">VIDEO</span></div>
     <p>THE HOME OF THE $899 WEBSITE + SIZZLE REEL COMBO</p>
+    <p><a href="/contact.html">Contact Us</a></p>
   </div>
 </footer>
 
