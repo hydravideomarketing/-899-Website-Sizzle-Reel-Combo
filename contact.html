@@ -60,15 +60,16 @@
     display:flex;align-items:center;gap:8px;white-space:nowrap;transition:color .2s;
   }
   .bar-phone:hover{color:var(--yellow)}
+  .bar-cta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:stretch;gap:12px;z-index:3}
   .bar-book{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:.05em;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14.5px;letter-spacing:.04em;
     text-transform:uppercase;text-decoration:none;white-space:nowrap;text-align:center;line-height:1.12;
-    background:var(--yellow);color:var(--purple-deep);padding:9px 30px;border-radius:4px;
+    background:var(--yellow);color:var(--purple-deep);padding:9px 24px;border-radius:4px;
     box-shadow:0 6px 22px -8px rgba(252,255,0,.55);
     transition:transform .15s,box-shadow .15s;
   }
-  .bar-book:hover{transform:translate(-50%,calc(-50% - 2px));box-shadow:0 12px 30px -8px rgba(252,255,0,.75)}
+  .bar-book:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(252,255,0,.75)}
   .bar-links{margin-left:auto;display:flex;align-items:center;gap:22px;position:relative;z-index:2}
   .bar-nav{
     font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
@@ -77,15 +78,17 @@
   }
   .bar-nav:hover{color:var(--yellow)}
   .bar.bot{bottom:0;border-top:1px solid rgba(255,255,255,0.06)}
+  @media (max-width:860px){
+    .bar-links{display:none}
+  }
   @media (max-width:700px){
     .bar.top{padding:0 12px;height:70px}
     .bar-phone .cw{display:none}
     .bar-phone{font-size:11px;letter-spacing:0}
-    .bar-book{font-size:11px;padding:6px 14px;letter-spacing:.03em}
-    .bar-nav{font-size:12px}
-    .bar-links{gap:14px}
+    .bar-book{font-size:10.5px;padding:6px 11px;letter-spacing:.02em}
+    .bar-cta{gap:8px}
   }
-  @media (max-width:360px){
+  @media (max-width:470px){
     .bar-phone{display:none}
   }
 
@@ -194,7 +197,10 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
 
 <div class="bar top">
   <a href="tel:8602819801" class="bar-phone"><span class="cw">Call </span>860-281-9801</a>
-  <a href="/#book" class="bar-book">Book Your Call or<br>Meeting on Calendly →</a>
+  <div class="bar-cta">
+    <a href="/#book" class="bar-book">Book Your Call or<br>Meeting on Calendly →</a>
+    <a href="/contact.html" class="bar-book">Fill Out Our<br>Contact Form →</a>
+  </div>
   <nav class="bar-links">
     <a href="/" class="bar-nav">Home</a>
     <a href="/calendly.html" class="bar-nav">Calendly</a>
