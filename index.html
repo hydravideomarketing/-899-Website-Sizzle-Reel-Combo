@@ -55,7 +55,7 @@
   .bar{position:fixed;left:0;right:0;height:26px;background:var(--purple-deep);z-index:60;pointer-events:none}
   .bar.top{
     top:0;border-bottom:1px solid rgba(255,255,255,0.06);
-    height:64px;display:flex;align-items:center;justify-content:flex-start;
+    height:84px;display:flex;align-items:center;justify-content:flex-start;
     padding:0 24px;pointer-events:auto;gap:14px;
   }
   .bar-phone{
@@ -66,9 +66,9 @@
   .bar-phone:hover{color:var(--yellow)}
   .bar-book{
     position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em;
-    text-transform:uppercase;text-decoration:none;white-space:nowrap;
-    background:var(--yellow);color:var(--purple-deep);padding:14px 34px;border-radius:4px;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:.05em;
+    text-transform:uppercase;text-decoration:none;white-space:nowrap;text-align:center;line-height:1.12;
+    background:var(--yellow);color:var(--purple-deep);padding:9px 30px;border-radius:4px;
     box-shadow:0 6px 22px -8px rgba(252,255,0,.55);
     transition:transform .15s,box-shadow .15s;
   }
@@ -82,10 +82,10 @@
   .bar-nav:hover{color:var(--yellow)}
   .bar.bot{bottom:0;border-top:1px solid rgba(255,255,255,0.06)}
   @media (max-width:700px){
-    .bar.top{padding:0 12px;height:58px}
+    .bar.top{padding:0 12px;height:70px}
     .bar-phone .cw{display:none}
     .bar-phone{font-size:11px;letter-spacing:0}
-    .bar-book{font-size:12px;padding:10px 14px;letter-spacing:.03em}
+    .bar-book{font-size:11px;padding:6px 14px;letter-spacing:.03em}
     .bar-nav{font-size:12px}
     .bar-links{gap:14px}
   }
@@ -423,7 +423,7 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
 
 <div class="bar top">
   <a href="tel:8602819801" class="bar-phone"><span class="cw">Call </span>860-281-9801</a>
-  <a href="#book" class="bar-book">Book Your Call or Meeting on Calendly →</a>
+  <a href="#book" class="bar-book">Book Your Call or<br>Meeting on Calendly →</a>
   <nav class="bar-links">
     <a href="/calendly.html" class="bar-nav">Calendly</a>
     <a href="/contact.html" class="bar-nav">Contact</a>
@@ -617,7 +617,7 @@ src="https://www.facebook.com/tr?id=2589113894876642&ev=PageView&noscript=1"/></
     <p class="lead rev">A modern website. A cinematic sizzle reel. One price. Your competition is one scroll away — claim your spot before the slots are full.</p>
 
     <div class="cta-row rev" style="justify-content:center;margin-top:36px">
-      <a href="#book" class="btn">Book Your Call or Meeting on Calendly <span class="arr">↑</span></a>
+      <a href="#book" class="btn"><span style="display:inline-block;text-align:center;line-height:1.15">Book Your Call or<br>Meeting on Calendly</span> <span class="arr">↑</span></a>
       <a href="/contact.html" class="btn">Fill Out Our Contact Form Today <span class="arr">→</span></a>
     </div>
     <p class="form-note" style="margin-top:18px">Or call <b style="color:var(--paper)">860-281-9801</b></p>
